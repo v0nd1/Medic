@@ -2,10 +2,17 @@ package com.huggydugy.medic.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+// App colors
+val Blue = Color(0xFF0560FA)
+val BlueLight = Color(0xFF2F80ED)
+val Red = Color(0xFFED3A3A)
+val Orange = Color(0xFFEC8000)
+val Yellow = Color(0xFFEBBC2E)
+val Green = Color(0xFF35B369)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+//Text colors
+val Dark = Color(0xFF141414)
+val DarkLight = Color(0xFF3A3A3A)
+val Gray = Color(0xFFA7A7A7)
+val GrayLight = Color(0xFFCFCFCF)
+val White = Color(0xFFFFFFFF)
