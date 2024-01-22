@@ -1,4 +1,4 @@
-package com.huggydugy.medic
+package com.huggydugy.medic.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -24,16 +23,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.center
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.huggydugy.medic.ui.theme.BlueLight
+import com.huggydugy.medic.ElementBoard
+import com.huggydugy.medic.R
 import com.huggydugy.medic.ui.theme.BlueLight2
 import com.huggydugy.medic.ui.theme.Gray
-import com.huggydugy.medic.ui.theme.GrayLight
 import com.huggydugy.medic.ui.theme.Green
 import com.huggydugy.medic.ui.theme.Roboto
 
@@ -57,7 +59,7 @@ fun OnBoardScreen(){
             header = "Мониторинг",
             description = "Наши врачи всегда наблюдают \n" +
                 "за вашими показателями здоровья",
-            size = 450.dp
+            size = 330.dp
         )
     )
     val pagerState = rememberPagerState()
@@ -110,6 +112,7 @@ fun OnBoardScreen(){
                     color = Gray,
                     fontSize = 14.sp,
                     fontFamily = Roboto,
+                    textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(50.dp))
                 Row(
@@ -119,12 +122,22 @@ fun OnBoardScreen(){
                     horizontalArrangement = Arrangement.Center
                 ) {
                     repeat(elements.size){
-                        val color = if (pagerState.currentPage == it) BlueLight2 else Gray
                         Box(
                             modifier = Modifier
                                 .padding(2.dp)
                                 .clip(CircleShape)
-                                .background(color)
+                                .drawWithContent {
+                                    if (pagerState.currentPage == it) {
+                                        drawRoundRect(color = BlueLight2, size = size, cornerRadius = CornerRadius.Zero)
+                                        drawCircle(color = Color.White, center = size.center, radius = 0.dp.toPx())
+                                    }
+                                    else {
+                                        drawRoundRect(color = BlueLight2, size = size, cornerRadius = CornerRadius.Zero)
+                                        drawCircle(color = Color.White, center = size.center, radius = 6.dp.toPx())
+                                    }
+
+                                }
+                                .background(BlueLight2)
                                 .size(13.dp)
                         )
 

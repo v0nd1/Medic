@@ -12,8 +12,9 @@ val Yellow = Color(0xFFEBBC2E)
 val Green = Color(0xFF00B712)
 
 //Text colors
-val Dark = Color(0xFF141414)
+val Black = Color(0xFF000000)
 val DarkLight = Color(0xFF3A3A3A)
 val Gray = Color(0xFF939396)
 val GrayLight = Color(0xFFCFCFCF)
+val GrayLight2 = Color(0xFFF5F5F9)
 val White = Color(0xFFFFFFFF)
