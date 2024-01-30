@@ -1,6 +1,5 @@
-package com.huggydugy.medic.screens
+package com.huggydugy.medic.screens.auth
 
-import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -10,11 +9,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -22,26 +19,30 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.huggydugy.medic.navigation.Screen
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight
@@ -49,9 +50,10 @@ import com.huggydugy.medic.ui.theme.GrayLight2
 import com.huggydugy.medic.ui.theme.Red
 import com.huggydugy.medic.ui.theme.Roboto
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
-fun CodeInputScreen(){
+fun CodeInputScreen(navController: NavController){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -77,7 +79,7 @@ fun CodeInputScreen(){
                 .background(color = GrayLight2, shape = RoundedCornerShape(10.dp))
                 .size(35.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .clickable {  },
+                .clickable { navController.navigate(Screen.AuthScreen.route) },
             contentAlignment = Alignment.Center
         ){
             Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = null)
@@ -95,7 +97,7 @@ fun CodeInputScreen(){
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.height(20.dp))
-            CodeTextField(value = value, length = 4, onValueChange ={value = it})
+            CodeTextField(value = value, length = 4, onValueChange ={value = it}, navController = navController)
             Spacer(modifier = Modifier.height(15.dp))
             if (second > 0){
                 Text(
@@ -134,17 +136,22 @@ private fun CodeTextField(
     boxWidth: Dp = 50.dp,
     boxHeight: Dp = 50.dp,
     enabled: Boolean = true,
+    spaceBetweenBoxes: Dp = 14.dp,
     keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
     keyboardActions: KeyboardActions = KeyboardActions(),
     onValueChange: (String) -> Unit,
+    navController: NavController
 ) {
-    val spaceBetweenBoxes = 14.dp
-    BasicTextField(modifier = modifier,
+    BasicTextField(
+        modifier = modifier,
         value = value,
         singleLine = true,
         onValueChange = {
             if (it.length <= length) {
                 onValueChange(it)
+            }
+            if (it.length == 4 && it == "3332"){
+                navController.navigate(Screen.AddPasswordScreen.route)
             }
         },
         enabled = enabled,
@@ -185,4 +192,5 @@ private fun CodeTextField(
             }
         }
     )
+    
 }

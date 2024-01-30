@@ -1,4 +1,4 @@
-package com.huggydugy.medic.screens
+package com.huggydugy.medic.screens.auth
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,14 +25,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.huggydugy.medic.ui.theme.BlueLight2
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.Roboto
-import com.huggydugy.medic.ui.theme.White
 
-@Preview(showBackground = true)
 @Composable
-fun AddPasswordScreen(){
+fun AddPasswordScreen(navController: NavController){
     Column(
         modifier = Modifier
             .fillMaxSize(),

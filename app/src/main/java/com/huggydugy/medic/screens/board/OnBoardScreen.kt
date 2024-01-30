@@ -1,4 +1,4 @@
-package com.huggydugy.medic.screens
+package com.huggydugy.medic.screens.board
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -32,8 +32,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.huggydugy.medic.ElementBoard
+import androidx.navigation.NavController
 import com.huggydugy.medic.R
+import com.huggydugy.medic.navigation.Screen
 import com.huggydugy.medic.ui.theme.BlueLight2
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.Green
@@ -41,7 +42,7 @@ import com.huggydugy.medic.ui.theme.Roboto
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardScreen(){
+fun OnBoardScreen(navController: NavController){
     val elements = listOf(
         ElementBoard(
             image = R.drawable.illustration,
@@ -87,7 +88,7 @@ fun OnBoardScreen(){
                     Text(
                         modifier = Modifier
                             .padding(start = 20.dp)
-                            .clickable { },
+                            .clickable { navController.navigate(Screen.AuthScreen.route) },
                         text = if(it == elements.lastIndex) "Завершить" else "Пропустить",
                         fontSize = 20.sp,
                         fontFamily = Roboto,
