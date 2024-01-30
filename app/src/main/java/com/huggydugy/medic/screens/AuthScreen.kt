@@ -130,7 +130,7 @@ fun AuthScreen(){
 }
 
 @Composable
-fun YandexButton(){
+private fun YandexButton(){
     Button(
         modifier = Modifier
             .fillMaxWidth()

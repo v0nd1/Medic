@@ -62,12 +62,15 @@ fun OnBoardScreen(){
             size = 330.dp
         )
     )
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(
+        initialPage = 0,
+        initialPageOffsetFraction = 0f,
+        pageCount ={ elements.size }
+    )
     Box(modifier = Modifier.fillMaxSize()){
         HorizontalPager(
             modifier = Modifier
                 .fillMaxSize(),
-            pageCount = elements.size,
             state = pagerState
         ) {
             Column(
@@ -128,19 +131,32 @@ fun OnBoardScreen(){
                                 .clip(CircleShape)
                                 .drawWithContent {
                                     if (pagerState.currentPage == it) {
-                                        drawRoundRect(color = BlueLight2, size = size, cornerRadius = CornerRadius.Zero)
-                                        drawCircle(color = Color.White, center = size.center, radius = 0.dp.toPx())
+                                        drawRoundRect(
+                                            color = BlueLight2,
+                                            size = size,
+                                            cornerRadius = CornerRadius.Zero
+                                        )
+                                        drawCircle(
+                                            color = Color.White,
+                                            center = size.center,
+                                            radius = 0.dp.toPx()
+                                        )
+                                    } else {
+                                        drawRoundRect(
+                                            color = BlueLight2,
+                                            size = size,
+                                            cornerRadius = CornerRadius.Zero
+                                        )
+                                        drawCircle(
+                                            color = Color.White,
+                                            center = size.center,
+                                            radius = 6.dp.toPx()
+                                        )
                                     }
-                                    else {
-                                        drawRoundRect(color = BlueLight2, size = size, cornerRadius = CornerRadius.Zero)
-                                        drawCircle(color = Color.White, center = size.center, radius = 6.dp.toPx())
-                                    }
-
                                 }
                                 .background(BlueLight2)
                                 .size(13.dp)
                         )
-
                     }
                 }
                 Image(
