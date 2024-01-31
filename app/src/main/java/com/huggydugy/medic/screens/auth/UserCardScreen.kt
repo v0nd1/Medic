@@ -112,7 +112,7 @@ fun UserCardScreen(navController: NavController){
 
         ThemeExposedDropdownMenuBox("Пол")
         Spacer(modifier = Modifier.height(40.dp))
-        ThemeButton(label = "Создать", navController = navController, route = "dsd")
+        ThemeButton(label = "Создать", navController = navController, route = Screen.MainScreen.route)
 
 
     }

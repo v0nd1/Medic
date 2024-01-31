@@ -9,24 +9,28 @@ import com.huggydugy.medic.screens.auth.AuthScreen
 import com.huggydugy.medic.screens.auth.CodeInputScreen
 import com.huggydugy.medic.screens.auth.UserCardScreen
 import com.huggydugy.medic.screens.board.OnBoardScreen
+import com.huggydugy.medic.screens.scaffold.main.MainScreen
 
 @Composable
-fun AppNavigation(navController: NavHostController){
-    NavHost(navController = navController, startDestination = Screen.OnBoardScreen.route){
+fun StartNavigation(navHostController: NavHostController){
+    NavHost(navController = navHostController, startDestination = Screen.OnBoardScreen.route){
         composable(route = Screen.OnBoardScreen.route){
-            OnBoardScreen(navController)
+            OnBoardScreen(navHostController)
         }
         composable(route = Screen.AddPasswordScreen.route){
-            AddPasswordScreen(navController)
+            AddPasswordScreen(navHostController)
         }
         composable(route = Screen.AuthScreen.route){
-            AuthScreen(navController)
+            AuthScreen(navHostController)
         }
         composable(route = Screen.CodeInputScreen.route){
-            CodeInputScreen(navController)
+            CodeInputScreen(navHostController)
         }
         composable(route = Screen.UserCardScreen.route){
-            UserCardScreen(navController = navController)
+            UserCardScreen(navController = navHostController)
+        }
+        composable(route = Screen.MainScreen.route){
+            MainScreen(navHostController = navHostController)
         }
     }
 }
