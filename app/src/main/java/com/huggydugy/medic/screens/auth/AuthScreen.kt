@@ -17,6 +17,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,6 +34,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.huggydugy.medic.R
+import com.huggydugy.medic.components.ThemeButton
+import com.huggydugy.medic.components.ThemeTextField
 import com.huggydugy.medic.navigation.Screen
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Gray
@@ -78,35 +81,9 @@ fun AuthScreen(navController: NavController){
             fontSize = 14.sp
         )
         Spacer(modifier = Modifier.height(5.dp))
-        OutlinedTextField(
-            modifier = Modifier
-                .fillMaxWidth(),
-            value = value ,
-            onValueChange = {value = it},
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = Color.Transparent,
-                unfocusedBorderColor = Color.Transparent,
-                containerColor = GrayLight2
-
-            ),
-            shape = RoundedCornerShape(10.dp),
-            placeholder = {
-                Text(
-                    text = "example@mail.ru",
-                    color = Gray
-                )
-            }
-        )
+        ThemeTextField("example@mail.ru")
         Spacer(modifier = Modifier.height(25.dp))
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(55.dp),
-            onClick = { navController.navigate(Screen.CodeInputScreen.route) },
-            shape = RoundedCornerShape(10.dp)
-        ) {
-            Text(text = "Далее", fontSize = 16.sp)
-        }
+        ThemeButton(label = "Далее", navController = navController, route = Screen.CodeInputScreen.route)
         Spacer(modifier = Modifier.weight(1f))
         Column(
             horizontalAlignment = Alignment.CenterHorizontally

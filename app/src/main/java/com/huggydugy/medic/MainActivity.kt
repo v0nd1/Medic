@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.huggydugy.medic.navigation.AppNavigation
 import com.huggydugy.medic.screens.auth.AddPasswordScreen
 import com.huggydugy.medic.screens.auth.CodeInputScreen
+import com.huggydugy.medic.screens.auth.UserCardScreen
 import com.huggydugy.medic.ui.theme.MedicTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,8 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AddPasswordScreen(navController = navController)
-                    //AppNavigation(navController = navController)
+                    AppNavigation(navController = navController)
                 }
             }
         }

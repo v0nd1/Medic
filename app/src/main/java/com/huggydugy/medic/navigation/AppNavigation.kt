@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.huggydugy.medic.screens.auth.AddPasswordScreen
 import com.huggydugy.medic.screens.auth.AuthScreen
 import com.huggydugy.medic.screens.auth.CodeInputScreen
+import com.huggydugy.medic.screens.auth.UserCardScreen
 import com.huggydugy.medic.screens.board.OnBoardScreen
 
 @Composable
@@ -23,6 +24,9 @@ fun AppNavigation(navController: NavHostController){
         }
         composable(route = Screen.CodeInputScreen.route){
             CodeInputScreen(navController)
+        }
+        composable(route = Screen.UserCardScreen.route){
+            UserCardScreen(navController = navController)
         }
     }
 }
