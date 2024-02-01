@@ -23,7 +23,7 @@ sealed class Screen (
     object AddPasswordScreen : Screen("add_password",0, 0, null)
     object AuthScreen : Screen("auth",0, 0, null)
     object CodeInputScreen : Screen("code_input",0, 0, null)
-    object UserCardScreen : Screen("user_card",0, 0, null)
+    object RegisterScreen : Screen("register",0, 0, null)
     object MainScreen : Screen("main",0, 0, null)
     object AccountScreen : Screen(
         route = "account",

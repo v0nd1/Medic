@@ -7,7 +7,7 @@ import androidx.navigation.compose.composable
 import com.huggydugy.medic.screens.auth.AddPasswordScreen
 import com.huggydugy.medic.screens.auth.AuthScreen
 import com.huggydugy.medic.screens.auth.CodeInputScreen
-import com.huggydugy.medic.screens.auth.UserCardScreen
+import com.huggydugy.medic.screens.auth.RegisterScreen
 import com.huggydugy.medic.screens.board.OnBoardScreen
 import com.huggydugy.medic.screens.scaffold.main.MainScreen
 
@@ -26,8 +26,8 @@ fun StartNavigation(navHostController: NavHostController){
         composable(route = Screen.CodeInputScreen.route){
             CodeInputScreen(navHostController)
         }
-        composable(route = Screen.UserCardScreen.route){
-            UserCardScreen(navController = navHostController)
+        composable(route = Screen.RegisterScreen.route){
+            RegisterScreen(navController = navHostController)
         }
         composable(route = Screen.MainScreen.route){
             MainScreen(navHostController = navHostController)

@@ -12,13 +12,23 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun ThemeButton(label: String, navController: NavController, route: String){
+fun ThemeButton(
+    label: String,
+    navController: NavController,
+    route: String,
+    enabled: Boolean,
+    onClick: () -> Unit
+){
     Button(
         modifier = Modifier
             .fillMaxWidth()
             .height(55.dp),
-        onClick = { navController.navigate(route = route) },
-        shape = RoundedCornerShape(10.dp)
+        onClick = {
+            navController.navigate(route = route)
+            onClick.invoke()
+        },
+        shape = RoundedCornerShape(10.dp),
+        enabled = enabled
     ) {
         Text(text = label, fontSize = 16.sp)
     }

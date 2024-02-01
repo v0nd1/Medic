@@ -64,7 +64,7 @@ fun AddPasswordScreen(navController: NavController){
         Text(
             modifier = Modifier
                 .padding(start = 20.dp)
-                .clickable { navController.navigate(Screen.UserCardScreen.route) },
+                .clickable { navController.navigate(Screen.RegisterScreen.route) },
             text = "Пропустить",
             fontSize = 15.sp,
             fontFamily = Roboto,

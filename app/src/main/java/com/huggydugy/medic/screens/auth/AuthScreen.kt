@@ -32,10 +32,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.huggydugy.medic.R
 import com.huggydugy.medic.components.ThemeButton
+import com.huggydugy.medic.components.ThemeDataField
 import com.huggydugy.medic.components.ThemeTextField
+import com.huggydugy.medic.data.AuthViewModel
+import com.huggydugy.medic.data.UIEvent
 import com.huggydugy.medic.navigation.Screen
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Gray
@@ -45,7 +49,7 @@ import com.huggydugy.medic.ui.theme.Roboto
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AuthScreen(navController: NavController){
+fun AuthScreen(navController: NavController, loginViewModel: AuthViewModel = viewModel()){
     var value by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
@@ -81,9 +85,22 @@ fun AuthScreen(navController: NavController){
             fontSize = 14.sp
         )
         Spacer(modifier = Modifier.height(5.dp))
-        ThemeTextField("example@mail.ru")
+        ThemeTextField(
+            placeholder = "example@mail.ru",
+            onTextSelected = {
+                loginViewModel.onEvent(UIEvent.EmailChanged(it))
+            }
+        )
         Spacer(modifier = Modifier.height(25.dp))
-        ThemeButton(label = "Далее", navController = navController, route = Screen.CodeInputScreen.route)
+        ThemeButton(
+            label = "Далее",
+            navController = navController,
+            route = Screen.CodeInputScreen.route,
+            enabled = true,
+            onClick = {
+                loginViewModel.onEvent(UIEvent.CheckEmailButtonClicked)
+            }
+        )
         Spacer(modifier = Modifier.weight(1f))
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
