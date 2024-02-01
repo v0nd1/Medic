@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.huggydugy.medic.navigation.StartNavigation
 import com.huggydugy.medic.screens.auth.AuthScreen
+import com.huggydugy.medic.screens.auth.RegisterScreen
 import com.huggydugy.medic.ui.theme.MedicTheme
 
 
@@ -24,9 +25,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    StartNavigation(navHostController = navController)
-                    //UserCardScreen(navController = navController)
-                    //AuthScreen(navController = navController)
+                    //StartNavigation(navHostController = navController)
+                    //RegisterScreen(navController = navController)
+                    AuthScreen(navController = navController)
                 }
             }
         }

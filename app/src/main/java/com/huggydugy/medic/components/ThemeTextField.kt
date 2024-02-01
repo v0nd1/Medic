@@ -19,7 +19,11 @@ import com.huggydugy.medic.ui.theme.GrayLight2
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ThemeTextField(placeholder: String, onTextSelected: (String) -> Unit){
+fun ThemeTextField(
+    placeholder: String,
+    onTextSelected: (String) -> Unit,
+    errorStatus: Boolean = false
+){
     var value by remember {
         mutableStateOf("")
     }
@@ -43,5 +47,6 @@ fun ThemeTextField(placeholder: String, onTextSelected: (String) -> Unit){
                 color = Gray
             )
         },
+        isError = !errorStatus
     )
 }

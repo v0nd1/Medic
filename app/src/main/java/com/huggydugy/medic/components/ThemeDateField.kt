@@ -25,7 +25,11 @@ import com.huggydugy.medic.ui.theme.GrayLight2
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ThemeDataField(placeholder: String, onTextSelected: (String) -> Unit){
+fun ThemeDataField(
+    placeholder: String,
+    onTextSelected: (String) -> Unit,
+    errorStatus: Boolean = false
+){
     var value by remember {
         mutableStateOf("")
     }
@@ -51,7 +55,8 @@ fun ThemeDataField(placeholder: String, onTextSelected: (String) -> Unit){
                 color = Gray
             )
         },
-        visualTransformation = MaskVisualTransformation(DATE_MASK)
+        visualTransformation = MaskVisualTransformation(DATE_MASK),
+        isError = !errorStatus
     )
 }
 

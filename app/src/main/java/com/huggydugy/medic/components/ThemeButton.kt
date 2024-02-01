@@ -16,7 +16,7 @@ fun ThemeButton(
     label: String,
     navController: NavController,
     route: String,
-    enabled: Boolean,
+    enabled: Boolean = false,
     onClick: () -> Unit
 ){
     Button(

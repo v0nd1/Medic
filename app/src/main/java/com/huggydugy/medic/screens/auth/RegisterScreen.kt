@@ -101,28 +101,33 @@ fun RegisterScreen(navController: NavController, loginViewModel: AuthViewModel =
             placeholder = "Имя",
             onTextSelected = {
                 loginViewModel.onEvent(UIEvent.FirstNameChanged(it))
-            }
+            },
+            errorStatus = loginViewModel.registrationUIState.value.firstNameError
         )
         Spacer(modifier = Modifier.height(20.dp))
         ThemeTextField(
             placeholder = "Отчество",
             onTextSelected = {
                 loginViewModel.onEvent(UIEvent.PatronymicChanged(it))
-            }
+            },
+            errorStatus = loginViewModel.registrationUIState.value.patronymicError
         )
         Spacer(modifier = Modifier.height(20.dp))
         ThemeTextField(
             placeholder = "Фамилия",
             onTextSelected = {
                 loginViewModel.onEvent(UIEvent.LastNameChanged(it))
-            }
+            },
+            errorStatus = loginViewModel.registrationUIState.value.lastNameError
         )
         Spacer(modifier = Modifier.height(20.dp))
         ThemeDataField(
             placeholder = "Дата рождения (дд/мм/гггг)" ,
             onTextSelected = {
                 loginViewModel.onEvent(UIEvent.DateChanged(it))
-            })
+            },
+            errorStatus = loginViewModel.registrationUIState.value.dateError
+        )
         Spacer(modifier = Modifier.height(20.dp))
 
         ThemeExposedDropdownMenuBox("Пол")
@@ -130,7 +135,7 @@ fun RegisterScreen(navController: NavController, loginViewModel: AuthViewModel =
         ThemeButton(
             label = "Создать",
             navController = navController,
-            route = Screen.MainScreen.route,
+            route = Screen.AddPasswordScreen.route,
             enabled = true,
             onClick = {
                 loginViewModel.onEvent(UIEvent.RegisterButtonClicked)

@@ -46,6 +46,7 @@ import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight
 import com.huggydugy.medic.ui.theme.GrayLight2
 import com.huggydugy.medic.ui.theme.Roboto
+import kotlin.math.log
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -89,14 +90,15 @@ fun AuthScreen(navController: NavController, loginViewModel: AuthViewModel = vie
             placeholder = "example@mail.ru",
             onTextSelected = {
                 loginViewModel.onEvent(UIEvent.EmailChanged(it))
-            }
+            },
+            errorStatus = loginViewModel.registrationUIState.value.emailError
         )
         Spacer(modifier = Modifier.height(25.dp))
         ThemeButton(
             label = "Далее",
             navController = navController,
             route = Screen.CodeInputScreen.route,
-            enabled = true,
+            enabled = loginViewModel.emailValidationPassed.value,
             onClick = {
                 loginViewModel.onEvent(UIEvent.CheckEmailButtonClicked)
             }

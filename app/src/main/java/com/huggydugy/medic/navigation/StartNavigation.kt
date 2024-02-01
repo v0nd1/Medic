@@ -9,6 +9,7 @@ import com.huggydugy.medic.screens.auth.AuthScreen
 import com.huggydugy.medic.screens.auth.CodeInputScreen
 import com.huggydugy.medic.screens.auth.RegisterScreen
 import com.huggydugy.medic.screens.board.OnBoardScreen
+import com.huggydugy.medic.screens.scaffold.account.AccountScreen
 import com.huggydugy.medic.screens.scaffold.main.MainScreen
 
 @Composable
@@ -29,8 +30,8 @@ fun StartNavigation(navHostController: NavHostController){
         composable(route = Screen.RegisterScreen.route){
             RegisterScreen(navController = navHostController)
         }
-        composable(route = Screen.MainScreen.route){
-            MainScreen(navHostController = navHostController)
+        composable(route = Screen.AccountScreen.route){
+            AccountScreen(navController = navHostController)
         }
     }
 }
