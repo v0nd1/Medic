@@ -134,8 +134,8 @@ fun RegisterScreen(navController: NavController, loginViewModel: AuthViewModel =
         Spacer(modifier = Modifier.height(40.dp))
         ThemeButton(
             label = "Создать",
-            navController = navController,
-            route = Screen.AddPasswordScreen.route,
+            //navController = navController,
+            //route = Screen.AddPasswordScreen.route,
             enabled = true,
             onClick = {
                 loginViewModel.onEvent(UIEvent.RegisterButtonClicked)

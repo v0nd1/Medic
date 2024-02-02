@@ -94,10 +94,18 @@ fun AuthScreen(navController: NavController, loginViewModel: AuthViewModel = vie
             errorStatus = loginViewModel.registrationUIState.value.emailError
         )
         Spacer(modifier = Modifier.height(25.dp))
+        ThemeTextField(
+            placeholder = "password",
+            onTextSelected = {
+                loginViewModel.onEvent(UIEvent.PasswordChanged(it))
+            },
+            errorStatus = loginViewModel.registrationUIState.value.passwordError
+        )
+        Spacer(modifier = Modifier.height(25.dp))
         ThemeButton(
             label = "Далее",
-            navController = navController,
-            route = Screen.CodeInputScreen.route,
+            //navController = navController,
+            //route = Screen.CodeInputScreen.route,
             enabled = loginViewModel.emailValidationPassed.value,
             onClick = {
                 loginViewModel.onEvent(UIEvent.CheckEmailButtonClicked)

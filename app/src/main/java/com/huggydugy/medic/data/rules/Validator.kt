@@ -23,12 +23,12 @@ object Validator {
     }
     fun validateDate(date: String) : ValidationResult{
         return ValidationResult(
-            (!date.isNullOrEmpty() && date.length >= 8)
+            (!date.isNullOrEmpty() && date.length == 8)
         )
     }
     fun validatePassword(password: String) : ValidationResult{
         return ValidationResult(
-            (!password.isNullOrEmpty() && password.length == 8)
+            (!password.isNullOrEmpty() && password.length >= 8)
         )
     }
 }

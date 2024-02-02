@@ -14,8 +14,8 @@ import androidx.navigation.NavController
 @Composable
 fun ThemeButton(
     label: String,
-    navController: NavController,
-    route: String,
+    //navController: NavController,
+    //route: String,
     enabled: Boolean = false,
     onClick: () -> Unit
 ){
@@ -24,7 +24,7 @@ fun ThemeButton(
             .fillMaxWidth()
             .height(55.dp),
         onClick = {
-            navController.navigate(route = route)
+            //navController.navigate(route = route)
             onClick.invoke()
         },
         shape = RoundedCornerShape(10.dp),
