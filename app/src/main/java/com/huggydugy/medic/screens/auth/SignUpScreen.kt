@@ -15,10 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,21 +33,18 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.huggydugy.medic.R
 import com.huggydugy.medic.components.ThemeButton
-import com.huggydugy.medic.components.ThemeDataField
 import com.huggydugy.medic.components.ThemeTextField
 import com.huggydugy.medic.data.AuthViewModel
 import com.huggydugy.medic.data.UIEvent
-import com.huggydugy.medic.navigation.Screen
+import com.huggydugy.medic.graphs.Screen
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight
-import com.huggydugy.medic.ui.theme.GrayLight2
 import com.huggydugy.medic.ui.theme.Roboto
-import kotlin.math.log
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AuthScreen(navController: NavController, loginViewModel: AuthViewModel = viewModel()){
+fun SignUpScreen(navController: NavController, loginViewModel: AuthViewModel = viewModel()){
     var value by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
@@ -104,8 +98,8 @@ fun AuthScreen(navController: NavController, loginViewModel: AuthViewModel = vie
         Spacer(modifier = Modifier.height(25.dp))
         ThemeButton(
             label = "Далее",
-            //navController = navController,
-            //route = Screen.CodeInputScreen.route,
+            navController = navController,
+            route = Screen.CodeInput.route,
             enabled = loginViewModel.emailValidationPassed.value,
             onClick = {
                 loginViewModel.onEvent(UIEvent.CheckEmailButtonClicked)

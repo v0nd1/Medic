@@ -42,11 +42,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.huggydugy.medic.navigation.Screen
+import com.huggydugy.medic.graphs.Screen
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight
 import com.huggydugy.medic.ui.theme.GrayLight2
+import com.huggydugy.medic.ui.theme.GrayLight3
 import com.huggydugy.medic.ui.theme.Red
 import com.huggydugy.medic.ui.theme.Roboto
 import kotlinx.coroutines.delay
@@ -79,7 +80,7 @@ fun CodeInputScreen(navController: NavController){
                 .background(color = GrayLight2, shape = RoundedCornerShape(10.dp))
                 .size(35.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .clickable { navController.navigate(Screen.AuthScreen.route) },
+                .clickable { navController.navigate(Screen.AddPassword.route) },
             contentAlignment = Alignment.Center
         ){
             Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = null)
@@ -151,7 +152,7 @@ private fun CodeTextField(
                 onValueChange(it)
             }
             if (it.length == 4 && it == "3332"){
-                navController.navigate(Screen.AddPasswordScreen.route)
+                navController.navigate(Screen.AddPassword.route)
             }
         },
         enabled = enabled,
@@ -173,8 +174,8 @@ private fun CodeTextField(
                             )
                             .size(boxWidth, boxHeight)
                             .border(
-                                0.5.dp,
-                                color = GrayLight,
+                                1.dp,
+                                color = GrayLight3,
                                 shape = RoundedCornerShape(10.dp)
                             ),
 
@@ -192,5 +193,4 @@ private fun CodeTextField(
             }
         }
     )
-    
 }

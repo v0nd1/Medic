@@ -1,6 +1,7 @@
 package com.huggydugy.medic.screens.auth
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -43,37 +44,44 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.huggydugy.medic.R
-import com.huggydugy.medic.navigation.Screen
+import com.huggydugy.medic.graphs.Screen
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Blue
 import com.huggydugy.medic.ui.theme.BlueLight2
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight
 import com.huggydugy.medic.ui.theme.GrayLight2
+import com.huggydugy.medic.ui.theme.Green
 import com.huggydugy.medic.ui.theme.Red
 import com.huggydugy.medic.ui.theme.Roboto
 import com.huggydugy.medic.ui.theme.White
 
 @Composable
 fun AddPasswordScreen(navController: NavController){
-    Column(horizontalAlignment = Alignment.End, modifier = Modifier.padding(horizontal = 10.dp)) {
+    Column(
+        horizontalAlignment = Alignment.End,
+        modifier = Modifier.padding(horizontal = 20.dp)
+    ) {
         Text(
             modifier = Modifier
-                .padding(start = 20.dp)
-                .clickable { navController.navigate(Screen.RegisterScreen.route) },
+                .padding(top = 20.dp)
+                .clickable { navController.navigate(Screen.Register.route) },
             text = "Пропустить",
             fontSize = 15.sp,
             fontFamily = Roboto,
-            color = BlueLight2,
+            color = Blue,
             fontWeight = FontWeight.Normal
         )
+        Spacer(modifier = Modifier.height(50.dp))
         Column(
             modifier = Modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(horizontal = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -81,18 +89,18 @@ fun AddPasswordScreen(navController: NavController){
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = Roboto,
-
+                textAlign = TextAlign.Center
                 )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = "Для защиты ваших персональных данных",
                 fontSize = 14.sp,
                 fontFamily = Roboto,
-                color = Gray
+                color = Gray,
+                textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.height(30.dp))
-            EnterPassword()
             Spacer(modifier = Modifier.height(60.dp))
+            EnterPassword()
             Keyboard()
         }
     }
@@ -139,98 +147,90 @@ private fun EnterPassword(){
                             )
                         }
                     }
-                    .size(13.dp)
+                    .size(20.dp)
             )
         }
     }
 }
 
 @Composable
-private fun Keyboard(){
+private fun Keyboard(
+    buttonSize: Dp = 90.dp,
+    iconSize: Dp = 40.dp
+){
     val rows = listOf(
         listOf("1", "2", "3"),
         listOf("4", "5", "6"),
-        listOf("7", "8", "9")
+        listOf("7", "8", "9"),
+        listOf("", "0", "del")
     )
-    val interactionSource = remember {
-        MutableInteractionSource()
-    }
-    val isPressed by interactionSource.collectIsPressedAsState()
-    val containerColor = if(isPressed) Blue else GrayLight2
-    val contentColor = if(isPressed) White else Black
-
     var password by remember{
         mutableStateOf("")
     }
-    val buttonSize = 100.dp
-    val iconSize = 40.dp
+    val fontSize = 30.sp
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize(),
         verticalArrangement = Arrangement.Center
     ) {
         for (row in rows){
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 for (symbol in row){
+                    val exceptionButton = listOf("","del")
+                    val interactionSource = remember { MutableInteractionSource() }
+                    val isPressed by interactionSource.collectIsPressedAsState()
+
+                    val containerColor =
+                        if(isPressed) Blue
+                        else if(symbol in exceptionButton) Color.Transparent
+                        else GrayLight2
+
+                    val contentColor =
+                        if(isPressed) White
+                        else if(symbol in exceptionButton) Black
+                        else Black
+
+                    val enabled = symbol == ""
                     Button(
                         modifier = Modifier
-                            .padding(horizontal = 10.dp)
                             .size(buttonSize),
-                        onClick = { /*TODO*/ },
+                        onClick = { println(symbol) },
                         shape = RoundedCornerShape(100),
                         interactionSource = interactionSource,
+                        enabled = !enabled,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = containerColor,
-                            contentColor = contentColor
+                            contentColor = contentColor,
+                            disabledContainerColor = Color.Transparent,
+                            disabledContentColor = Black
                         )
+
                     ) {
-                        Text(
-                            text = symbol,
-                            fontSize = 25.sp,
-                            fontWeight = FontWeight.Bold,
-                            fontFamily = Roboto
-                        )
+                        if (symbol == "del"){
+                            Icon(
+                                painterResource(id = R.drawable.del_icon),
+                                null,
+                                modifier = Modifier
+                                    .size(iconSize)
+                                    .clickable { }
+                            )
+                        }else{
+                            Text(
+                                text = symbol,
+                                fontSize = fontSize,
+                                fontWeight = FontWeight.Bold,
+                                fontFamily = Roboto
+                            )
+                        }
+
                     }
                 }
             }
             Spacer(modifier = Modifier.height(20.dp))
         }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 10.dp),
-            horizontalArrangement = Arrangement.End,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Button(
-                modifier = Modifier
-                    .padding(horizontal = 10.dp)
-                    .size(buttonSize),
-                onClick = { /*TODO*/ },
-                shape = RoundedCornerShape(100),
-                interactionSource = interactionSource,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = containerColor,
-                    contentColor = contentColor
-                )
-            ) {
-                Text(
-                    text = "0",
-                    fontSize = 25.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = Roboto
-                )
-            }
-            Icon(
-                painterResource(id = R.drawable.del_icon),
-                null,
-                modifier = Modifier
-                    .padding(horizontal = 48.dp)
-                    .size(iconSize)
-                    .clickable { }
-            )
-        }
+
     }
 }

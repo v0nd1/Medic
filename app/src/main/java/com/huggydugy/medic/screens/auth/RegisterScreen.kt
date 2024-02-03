@@ -1,5 +1,6 @@
 package com.huggydugy.medic.screens.auth
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -34,13 +35,15 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.huggydugy.medic.components.ThemeButton
 import com.huggydugy.medic.components.ThemeDataField
 import com.huggydugy.medic.components.ThemeTextField
 import com.huggydugy.medic.data.AuthViewModel
 import com.huggydugy.medic.data.UIEvent
-import com.huggydugy.medic.navigation.Screen
+import com.huggydugy.medic.graphs.Graph
 import com.huggydugy.medic.ui.theme.Black
+import com.huggydugy.medic.ui.theme.Blue
 import com.huggydugy.medic.ui.theme.BlueLight2
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight2
@@ -48,7 +51,7 @@ import com.huggydugy.medic.ui.theme.Roboto
 
 
 @Composable
-fun RegisterScreen(navController: NavController, loginViewModel: AuthViewModel = viewModel()){
+fun RegisterScreen(navController: NavHostController, loginViewModel: AuthViewModel = viewModel()){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -71,11 +74,11 @@ fun RegisterScreen(navController: NavController, loginViewModel: AuthViewModel =
             Text(
                 modifier = Modifier
                     .padding(top = 5.dp)
-                    .clickable { navController.navigate(Screen.AuthScreen.route) },
+                    .clickable { navController.navigate(Graph.TESTS)},
                 text = "Пропустить",
-                fontSize = 18.sp,
+                fontSize = 15.sp,
                 fontFamily = Roboto,
-                color = BlueLight2,
+                color = Blue,
                 fontWeight = FontWeight.Normal,
 
             )
@@ -134,8 +137,8 @@ fun RegisterScreen(navController: NavController, loginViewModel: AuthViewModel =
         Spacer(modifier = Modifier.height(40.dp))
         ThemeButton(
             label = "Создать",
-            //navController = navController,
-            //route = Screen.AddPasswordScreen.route,
+            navController = navController,
+            route = Graph.TESTS,
             enabled = true,
             onClick = {
                 loginViewModel.onEvent(UIEvent.RegisterButtonClicked)

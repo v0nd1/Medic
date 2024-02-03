@@ -34,7 +34,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.huggydugy.medic.R
-import com.huggydugy.medic.navigation.Screen
+import com.huggydugy.medic.graphs.Graph
+import com.huggydugy.medic.graphs.Screen
 import com.huggydugy.medic.ui.theme.BlueLight2
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.Green
@@ -88,7 +89,7 @@ fun OnBoardScreen(navController: NavController){
                     Text(
                         modifier = Modifier
                             .padding(start = 20.dp)
-                            .clickable { navController.navigate(Screen.AuthScreen.route) },
+                            .clickable { navController.navigate(Screen.SignUp.route) },
                         text = if(it == elements.lastIndex) "Завершить" else "Пропустить",
                         fontSize = 20.sp,
                         fontFamily = Roboto,

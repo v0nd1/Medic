@@ -82,5 +82,10 @@ dependencies {
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelVersion")
 
+    // LottiAnimation
+    implementation("com.airbnb.android:lottie-compose:4.2.0")
+
+    implementation("androidx.compose.material:material-icons-extended:1.6.0")
+
 
 }

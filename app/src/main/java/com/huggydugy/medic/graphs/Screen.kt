@@ -1,4 +1,4 @@
-package com.huggydugy.medic.navigation
+package com.huggydugy.medic.graphs
 
 import android.graphics.drawable.Icon
 import androidx.annotation.DrawableRes
@@ -14,38 +14,41 @@ import com.huggydugy.medic.R
 
 sealed class Screen (
     val route: String,
-    val iconFilled: Int,
-    val iconOutlined: Int,
-    val label: String? = null,
+    val iconFilled: Int = 0,
+    val iconOutlined: Int = 0,
+    val title: String = "",
 
 ){
-    object OnBoardScreen : Screen("on_board", 0, 0, null)
-    object AddPasswordScreen : Screen("add_password",0, 0, null)
-    object AuthScreen : Screen("auth",0, 0, null)
-    object CodeInputScreen : Screen("code_input",0, 0, null)
-    object RegisterScreen : Screen("register",0, 0, null)
-    object MainScreen : Screen("main",0, 0, null)
-    object AccountScreen : Screen(
+    // Start screens
+    object OnBoard : Screen("on_board" )
+    object AddPassword : Screen("add_password")
+    object SignUp : Screen("auth")
+    object CodeInput : Screen("code_input")
+    object Register : Screen("register")
+
+    // Main scaffold screens
+    object Main : Screen("main")
+    object Account : Screen(
         route = "account",
-        label = "Профиль",
+        title = "Профиль",
         iconFilled =  R.drawable.account_filled,
         iconOutlined = R.drawable.account_outlined
     )
-    object TestsScreen : Screen(
+    object Tests : Screen(
         route = "tests",
-        label = "Анализы",
+        title = "Анализы",
         iconFilled = R.drawable.tests_filled,
         iconOutlined = R.drawable.tests_outlined
     )
-    object ResultsScreen : Screen(
+    object Results : Screen(
         route = "results",
-        label = "Результаты",
+        title = "Результаты",
         iconFilled = R.drawable.results,
         iconOutlined = R.drawable.results
     )
-    object SupportScreen : Screen(
+    object Support : Screen(
         route = "suport",
-        label = "Поддержка",
+        title = "Поддержка",
         iconFilled = R.drawable.support,
         iconOutlined = R.drawable.support
     )
