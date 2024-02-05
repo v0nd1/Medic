@@ -99,8 +99,13 @@ fun AddPasswordScreen(navController: NavController){
                 color = Gray,
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.height(60.dp))
-            EnterPassword()
+            Box(
+                modifier = Modifier
+                    .height(60.dp),
+                contentAlignment = Alignment.Center
+            ){
+                EnterPassword()
+            }
             Keyboard()
         }
     }
