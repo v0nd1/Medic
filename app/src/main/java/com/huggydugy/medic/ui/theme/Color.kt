@@ -6,6 +6,8 @@ import androidx.compose.ui.graphics.Color
 val Blue = Color(0xFF0560FA)
 val BlueLight = Color(0xFF2F80ED)
 val BlueLight2 = Color(0xFF57A9FF)
+val BlueLight3 = Color(0xFF8BC4FF)
+val BlueLight4 = Color(0xFFB8DAFF)
 val Red = Color(0xFFED3A3A)
 val Orange = Color(0xFFEC8000)
 val Yellow = Color(0xFFEBBC2E)
