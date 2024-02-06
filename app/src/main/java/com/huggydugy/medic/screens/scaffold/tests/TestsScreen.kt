@@ -133,15 +133,15 @@ private fun CardEvent(
 
             ) {
                 Column(
-                    modifier = Modifier.padding(end = 5.dp)
+                    modifier = Modifier.width(100.dp)
                 ) {
-//                    Text(
-//                        text = headText,
-//                        textAlign = TextAlign.Left,
-//                        fontSize = 20.sp,
-//                        fontWeight = FontWeight.Bold,
-//                        color = White
-//                    )
+                    Text(
+                        text = headText,
+                        textAlign = TextAlign.Left,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = White
+                    )
                     Text(
                         text = descr,
                         textAlign = TextAlign.Left,
@@ -150,7 +150,9 @@ private fun CardEvent(
                     )
                     Text(
                         text = price,
-                        textAlign = TextAlign.Left
+                        textAlign = TextAlign.Left,
+                        color = White,
+                        fontFamily = Roboto
                     )
                 }
 
