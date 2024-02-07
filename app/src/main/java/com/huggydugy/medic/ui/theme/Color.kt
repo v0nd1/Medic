@@ -3,7 +3,7 @@ package com.huggydugy.medic.ui.theme
 import androidx.compose.ui.graphics.Color
 
 // App colors
-val Blue = Color(0xFF0560FA)
+val Blue = Color(0xFF1A6FEE)
 val BlueLight = Color(0xFF2F80ED)
 val BlueLight2 = Color(0xFF57A9FF)
 val BlueLight3 = Color(0xFFCDE3FF)
@@ -25,3 +25,4 @@ val GrayLight3 = Color(0xFFEBEBEB)
 val GrayLight4 = Color(0xFFB8C1CC)
 val White = Color(0xFFFFFFFF)
 val White2 = Color(0xFFFDFDFD)
+val White3 = Color(0xFFF8F8F8)

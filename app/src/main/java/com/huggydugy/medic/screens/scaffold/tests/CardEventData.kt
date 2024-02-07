@@ -9,7 +9,7 @@ import com.huggydugy.medic.ui.theme.AquaGreen
 import com.huggydugy.medic.ui.theme.BlueLight3
 import com.huggydugy.medic.ui.theme.BlueLight4
 
-sealed class Card(
+sealed class CardEventData(
     val image: Int,
     val headText: String,
     val descr: String,
@@ -17,7 +17,7 @@ sealed class Card(
     val gradient: List<Color>,
     val textWidth: Dp
 ){
-    object Card1 : Card(
+    object Card1 : CardEventData(
         image = R.drawable.man_card,
         headText = "Чек-ап для мужчин",
         descr = "9 исследований",
@@ -25,7 +25,7 @@ sealed class Card(
         gradient = listOf(BlueLight4, BlueLight3),
         textWidth = 135.dp
     )
-    object Card2 : Card(
+    object Card2 : CardEventData(
         image = R.drawable.flask_card,
         headText = "Подготовка к вакцинации",
         descr = "Комплексное обследование\n" +
