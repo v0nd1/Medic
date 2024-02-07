@@ -85,7 +85,11 @@ dependencies {
     // LottiAnimation
     implementation("com.airbnb.android:lottie-compose:4.2.0")
 
+    // Icons
     implementation("androidx.compose.material:material-icons-extended:1.6.0")
+
+    // Accompanist Navigation
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.16.1")
 
 
 }
