@@ -1,4 +1,4 @@
-package com.huggydugy.medic.data
+package com.huggydugy.medic.data.authViewModel
 
 /*
 * Автор: Вдовенко Дмитрий

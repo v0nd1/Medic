@@ -1,52 +1,35 @@
 package com.huggydugy.medic.screens.scaffold.tests
 
-import android.widget.Toast
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Arrangement.Bottom
 import androidx.compose.foundation.layout.Arrangement.SpaceBetween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.paddingFrom
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarColors
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.asIntState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -66,8 +49,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.huggydugy.medic.R
+import com.huggydugy.medic.data.mainViewModel.MainViewModel
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Blue
 import com.huggydugy.medic.ui.theme.BlueLight
@@ -85,7 +71,7 @@ import com.huggydugy.medic.ui.theme.White3
 
 private val PADDING = 20.dp
 @Composable
-fun TestsScreen(navController: NavController){
+fun TestsScreen(navController: NavController, mainViewModel: MainViewModel = viewModel()){
     val scrollBehavior = rememberScrollState()
     Column(
         modifier = Modifier
@@ -95,7 +81,7 @@ fun TestsScreen(navController: NavController){
         Spacer(modifier = Modifier.height(30.dp))
         Events()
         Spacer(modifier = Modifier.height(30.dp))
-        CatalogTests()
+        CatalogTests(mainViewModel)
     }
 
 }
@@ -150,7 +136,8 @@ private fun CardEvent(
     Card(
         modifier = Modifier
             .width(300.dp)
-            .height(200.dp),
+            .height(200.dp)
+            .clickable { },
     ) {
         Row(
             modifier = Modifier
@@ -209,18 +196,22 @@ private fun CardEvent(
 }
 
 @Composable
-private fun ButtonCatalog(label: String, isPressed: Boolean){
+private fun ButtonCatalog(
+    label: String,
+    onButtonClicked: () -> Unit,
+    isSelected: Boolean
+){
     Box(
         modifier = Modifier
             .wrapContentSize()
-            .clickable { }
+            .clickable { onButtonClicked() }
             .clip(RoundedCornerShape(30))
-            .background(if (isPressed) Blue else GrayLight2),
+            .background(if (isSelected) Blue else GrayLight2),
         contentAlignment = Alignment.Center
-    ){
+    ) {
         Text(
             text = label,
-            color = Gray,
+            color = if (isSelected) Color.White else Color.Gray,
             modifier = Modifier.padding(18.dp),
             fontFamily = Roboto
         )
@@ -296,7 +287,8 @@ private fun CardCatalog(
 }
 
 @Composable
-private fun CatalogTests(){
+private fun CatalogTests(viewModel: MainViewModel){
+    var selectedButtonIndex by remember { mutableIntStateOf(0) }
     val buttons = listOf(
        "Популярное", "Covid", "Комплексные",
        "Чекапы", "Биохимия", "Гормоны",
@@ -305,13 +297,25 @@ private fun CatalogTests(){
         "Только в клинике"
     )
     val cards = listOf(
-        CardCatalogData.Card1,
-        CardCatalogData.Card2,
-        CardCatalogData.Card3,
-        CardCatalogData.Card4,
-        CardCatalogData.Card5,
-        CardCatalogData.Card6,
-        CardCatalogData.Card7
+        listOf(
+            CardCatalogData.Card1, CardCatalogData.Card2,
+            CardCatalogData.Card3, CardCatalogData.Card4,
+            CardCatalogData.Card5, CardCatalogData.Card6,
+            CardCatalogData.Card7),
+        listOf(
+            CardCatalogData.Card7, CardCatalogData.Card1,
+            CardCatalogData.Card2, CardCatalogData.Card3
+        ),
+        listOf(
+            CardCatalogData.Card3, CardCatalogData.Card7,
+            CardCatalogData.Card1, CardCatalogData.Card5,
+            CardCatalogData.Card4, CardCatalogData.Card6,
+
+        ),
+        listOf(CardCatalogData.Card4, CardCatalogData.Card2),
+        listOf(CardCatalogData.Card5, CardCatalogData.Card2),
+        listOf(CardCatalogData.Card6, CardCatalogData.Card2),
+        listOf(CardCatalogData.Card7, CardCatalogData.Card2)
     )
     Column {
         Text(
@@ -329,8 +333,14 @@ private fun CatalogTests(){
             horizontalArrangement = Arrangement.spacedBy(PADDING),
             contentPadding = PaddingValues(horizontal = PADDING)
         ){
-            items(buttons.size){
-                ButtonCatalog(label = buttons[it], isPressed = false)
+            items(buttons.size){ index ->
+                ButtonCatalog(
+                    label = buttons[index],
+                    isSelected = index == selectedButtonIndex,
+                    onButtonClicked = {
+                        selectedButtonIndex = index
+                    }
+                )
             }
         }
         Column(
@@ -339,7 +349,7 @@ private fun CatalogTests(){
                 .padding(horizontal = PADDING, vertical = PADDING),
             verticalArrangement = Arrangement.spacedBy(PADDING)
         ){
-            cards.forEach{ it ->
+            cards[selectedButtonIndex].forEach{ it ->
                 CardCatalog(
                     title = it.title,
                     time = it.time,

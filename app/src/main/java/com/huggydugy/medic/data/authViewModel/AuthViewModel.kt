@@ -1,9 +1,10 @@
-package com.huggydugy.medic.data
+package com.huggydugy.medic.data.authViewModel
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.huggydugy.medic.data.UIEvent
 import com.huggydugy.medic.data.rules.Validator
 
 /*

@@ -34,7 +34,7 @@ import androidx.navigation.NavController
 import com.huggydugy.medic.R
 import com.huggydugy.medic.components.ThemeButton
 import com.huggydugy.medic.components.ThemeTextField
-import com.huggydugy.medic.data.AuthViewModel
+import com.huggydugy.medic.data.authViewModel.AuthViewModel
 import com.huggydugy.medic.data.UIEvent
 import com.huggydugy.medic.graphs.Screen
 import com.huggydugy.medic.ui.theme.Black
@@ -42,6 +42,7 @@ import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight
 import com.huggydugy.medic.ui.theme.Roboto
 
+//
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(navController: NavController, loginViewModel: AuthViewModel = viewModel()){
