@@ -11,13 +11,14 @@ import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.huggydugy.medic.screens.auth.RegisterScreen
 import com.huggydugy.medic.screens.scaffold.MainScreen
 import com.huggydugy.medic.screens.scaffold.tests.TestsScreen
+import com.huggydugy.medic.screens.splash.SplashScreen
 
 @Composable
 fun RootNavigationGraph(navController: NavHostController){
     NavHost(
         navController = navController,
         route = Graph.ROOT,
-        startDestination = Graph.TESTS,
+        startDestination = Graph.SPLASH,
         enterTransition = {
             EnterTransition.None
         },
@@ -25,6 +26,9 @@ fun RootNavigationGraph(navController: NavHostController){
             ExitTransition.None
         }
     ){
+        composable(route = Graph.SPLASH){
+            SplashScreen(navController = navController)
+        }
         authNavGraph(navController)
         composable(route = Graph.TESTS){
             MainScreen()

@@ -26,3 +26,10 @@ val GrayLight4 = Color(0xFFB8C1CC)
 val White = Color(0xFFFFFFFF)
 val White2 = Color(0xFFFDFDFD)
 val White3 = Color(0xFFF8F8F8)
+
+// Gradient Colors
+val BlueGradient = Color(0xFF2254F5)
+val BlueGradient2 = Color(0xFF3740F5)
+val BlueGradient3 = Color(0xFF6269F0)
+val AquaGradient = Color(0xFF74C8E4)
+val AquaGradient2 = Color(0xFF74C8E4)
