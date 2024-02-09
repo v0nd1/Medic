@@ -18,7 +18,7 @@ fun RootNavigationGraph(navController: NavHostController){
     NavHost(
         navController = navController,
         route = Graph.ROOT,
-        startDestination = Graph.SPLASH,
+        startDestination = Graph.TESTS,
         enterTransition = {
             EnterTransition.None
         },

@@ -35,6 +35,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.huggydugy.medic.components.ThemeButton
 import com.huggydugy.medic.components.ThemeDataField
+import com.huggydugy.medic.components.ThemeExposedDropdownMenuBox
 import com.huggydugy.medic.components.ThemeTextField
 import com.huggydugy.medic.data.authViewModel.AuthViewModel
 import com.huggydugy.medic.data.UIEvent
@@ -144,58 +145,4 @@ fun RegisterScreen(navController: NavHostController, loginViewModel: AuthViewMod
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun ThemeExposedDropdownMenuBox(placeholder: String) {
-    val context = LocalContext.current
-    val genders = arrayOf("Мужской", "Женский")
-    var expanded by remember { mutableStateOf(false) }
-    var selectedText by remember { mutableStateOf(genders[0]) }
 
-    ExposedDropdownMenuBox(
-        modifier = Modifier.fillMaxWidth(),
-        expanded = expanded,
-        onExpandedChange = {
-            expanded = !expanded
-        }
-    ) {
-        OutlinedTextField(
-            value = selectedText,
-            onValueChange = {},
-            readOnly = true,
-            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-            modifier = Modifier
-                .fillMaxWidth()
-                .menuAnchor(),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = Color.Gray,
-                unfocusedBorderColor = Color.Transparent,
-                containerColor = GrayLight2,
-            ),
-            shape = RoundedCornerShape(10.dp),
-            placeholder = {
-                Text(
-                    text = placeholder,
-                    color = Gray
-                )
-            },
-        )
-        ExposedDropdownMenu(
-            modifier = Modifier.fillMaxWidth(),
-            expanded = expanded,
-            onDismissRequest = { expanded = false }
-        ) {
-            genders.forEach { item ->
-                DropdownMenuItem(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = { Text(text = item) },
-                    onClick = {
-                        selectedText = item
-                        expanded = false
-                        Toast.makeText(context, item, Toast.LENGTH_SHORT).show()
-                    }
-                )
-            }
-        }
-    }
-}

@@ -25,6 +25,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.asIntState
@@ -53,6 +54,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.huggydugy.medic.R
+import com.huggydugy.medic.components.ThemeSearchBar
 import com.huggydugy.medic.data.mainViewModel.MainViewModel
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Blue
@@ -73,16 +75,24 @@ private val PADDING = 20.dp
 @Composable
 fun TestsScreen(navController: NavController, mainViewModel: MainViewModel = viewModel()){
     val scrollBehavior = rememberScrollState()
-    Column(
-        modifier = Modifier
-            .verticalScroll(scrollBehavior)
-            .fillMaxSize()
+    Scaffold(
+        topBar = {
+            ThemeSearchBar()
+        }
     ) {
-        Spacer(modifier = Modifier.height(30.dp))
-        Events()
-        Spacer(modifier = Modifier.height(30.dp))
-        CatalogTests(mainViewModel)
+        Column(
+            modifier = Modifier
+                .verticalScroll(scrollBehavior)
+                .fillMaxSize()
+                .padding(it)
+        ) {
+            Spacer(modifier = Modifier.height(30.dp))
+            Events()
+            Spacer(modifier = Modifier.height(30.dp))
+            CatalogTests(mainViewModel)
+        }
     }
+
 
 }
 

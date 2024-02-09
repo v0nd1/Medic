@@ -13,7 +13,7 @@ import com.huggydugy.medic.screens.board.OnBoardScreen
 fun NavGraphBuilder.authNavGraph(navController: NavHostController){
     navigation(
         route = Graph.AUTHENTICATION,
-        startDestination = Screen.AddPassword.route
+        startDestination = Screen.OnBoard.route
     ){
         composable(route = Screen.OnBoard.route){
             OnBoardScreen(navController = navController)

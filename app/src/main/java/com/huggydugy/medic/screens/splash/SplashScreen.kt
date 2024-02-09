@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -16,16 +17,22 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.huggydugy.medic.R
+import com.huggydugy.medic.graphs.Graph
 import com.huggydugy.medic.ui.theme.AquaGradient
 import com.huggydugy.medic.ui.theme.BlueGradient
 import com.huggydugy.medic.ui.theme.BlueGradient2
 import com.huggydugy.medic.ui.theme.BlueGradient3
 import com.huggydugy.medic.ui.theme.BlueLight
 import com.huggydugy.medic.ui.theme.White
+import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController){
     val gradient = listOf(AquaGradient, BlueGradient2, BlueGradient, BlueGradient2, BlueGradient3, AquaGradient)
+    LaunchedEffect(key1 = true){
+        delay(2000)
+        navController.navigate(Graph.AUTHENTICATION)
+    }
     Box(
         modifier = Modifier
             .fillMaxSize()

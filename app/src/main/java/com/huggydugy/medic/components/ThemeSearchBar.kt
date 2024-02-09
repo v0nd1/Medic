@@ -1,8 +1,11 @@
 package com.huggydugy.medic.components
 
 import android.widget.Toast
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight2
 import com.huggydugy.medic.ui.theme.GrayLight4
+import com.huggydugy.medic.ui.theme.White
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,46 +41,53 @@ fun ThemeSearchBar(
         mutableStateOf(false)
     }
     val contextForToast = LocalContext.current.applicationContext
-
-    SearchBar(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 10.dp),
-        query = queryString,
-        onQueryChange = {
-            queryString = it
-        },
-        onSearch = {
-            isActive = false
-            Toast.makeText(
-                contextForToast,
-                "Your query: $queryString",
-                Toast.LENGTH_SHORT
-            ).show()
-        },
-        active = isActive,
-        onActiveChange = {
-            isActive = it
-        },
-        placeholder = {
-            Text(
-                text = "Искать анализы",
-                color = colorContent
+            .wrapContentHeight()
+            .background(White)
+    ){
+        SearchBar(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 10.dp),
+            query = queryString,
+            onQueryChange = {
+                queryString = it
+            },
+            onSearch = {
+                isActive = false
+                Toast.makeText(
+                    contextForToast,
+                    "Your query: $queryString",
+                    Toast.LENGTH_SHORT
+                ).show()
+            },
+            active = isActive,
+            onActiveChange = {
+                isActive = it
+            },
+            placeholder = {
+                Text(
+                    text = "Искать анализы",
+                    color = colorContent
+                )
+            },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search",
+                    tint = colorContent
+                )
+            },
+            colors = SearchBarDefaults.colors(
+                containerColor = colorContainer,
+                dividerColor = colorDivide
             )
-        },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = "Search",
-                tint = colorContent
-            )
-        },
-        colors = SearchBarDefaults.colors(
-            containerColor = colorContainer,
-            dividerColor = colorDivide
-        )
-    ) {
+        ) {
 
+        }
     }
+
 
 }

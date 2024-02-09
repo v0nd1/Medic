@@ -55,19 +55,9 @@ import com.huggydugy.medic.ui.theme.Roboto
 import com.huggydugy.medic.ui.theme.White
 import com.huggydugy.medic.ui.theme.White2
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(navController: NavHostController = rememberNavController()){
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
-        topBar = {
-            CenterAlignedTopAppBar(
-                title = {
-                    ThemeSearchBar()
-                },
-                scrollBehavior = scrollBehavior
-            )
-        },
         bottomBar = {
             BottomBar(navController = navController)
         },
@@ -76,9 +66,7 @@ fun MainScreen(navController: NavHostController = rememberNavController()){
         Box(modifier = Modifier.padding(it)){
             MainNavGraph(navController = navController)
         }
-
     }
-
 }
 @Composable
 fun BottomBar(navController: NavHostController){
