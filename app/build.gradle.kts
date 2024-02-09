@@ -51,11 +51,6 @@ android {
 }
 
 dependencies {
-
-    val navVersion = "2.7.6"
-    val fireBaseVersion = "22.3.1"
-    val viewModelVersion = "2.7.0"
-
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
@@ -63,7 +58,7 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("androidx.compose.material3:material3:1.2.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -73,23 +68,26 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // Navigation
-    implementation("androidx.navigation:navigation-compose:$navVersion")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     // Firebase
-    implementation("com.google.firebase:firebase-auth:$fireBaseVersion")
+    implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
 
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$viewModelVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 
     // LottiAnimation
     implementation("com.airbnb.android:lottie-compose:4.2.0")
 
     // Icons
-    implementation("androidx.compose.material:material-icons-extended:1.6.0")
+    implementation("androidx.compose.material:material-icons-extended:1.6.1")
 
     // Accompanist Navigation
     implementation("com.google.accompanist:accompanist-navigation-animation:0.16.1")
+
+    // Splashscreen
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
 
 }
