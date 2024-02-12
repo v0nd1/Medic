@@ -1,35 +1,47 @@
 package com.huggydugy.medic.graphs
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.huggydugy.medic.screens.auth.RegisterScreen
-import com.huggydugy.medic.screens.scaffold.MainScreen
-import com.huggydugy.medic.screens.scaffold.tests.TestsScreen
-import com.huggydugy.medic.screens.splash.SplashScreen
+import androidx.navigation.navigation
+import com.huggydugy.medic.presentation.auth.AddPasswordScreen
+import com.huggydugy.medic.presentation.auth.CodeInputScreen
+import com.huggydugy.medic.presentation.auth.RegisterScreen
+import com.huggydugy.medic.presentation.auth.SignUpScreen
+import com.huggydugy.medic.presentation.navgraph.Graph
+import com.huggydugy.medic.presentation.navgraph.Screen
+import com.huggydugy.medic.presentation.scaffold.MainScreen
 
 @Composable
 fun RootNavigationGraph(navController: NavHostController){
     NavHost(
         navController = navController,
         route = Graph.ROOT,
-        startDestination = Graph.TESTS,
-        enterTransition = {
-            EnterTransition.None
-        },
-        exitTransition = {
-            ExitTransition.None
-        }
+        startDestination = Graph.AUTHENTICATION,
     ){
-        composable(route = Graph.SPLASH){
-            SplashScreen(navController = navController)
+        navigation(
+            route = Graph.AUTHENTICATION,
+            startDestination = Screen.OnBoard.route
+        ){
+            composable(route = Screen.OnBoard.route){
+                //val viewModel: OnBoardViewModel = hiltViewModel()
+                //OnBoardScreen(navController = navController)
+            }
+            composable(route = Screen.SignUp.route){
+                SignUpScreen(navController = navController)
+            }
+            composable(route = Screen.CodeInput.route){
+                CodeInputScreen(navController = navController)
+            }
+            composable(route = Screen.AddPassword.route){
+                AddPasswordScreen(navController = navController)
+            }
+            composable(route = Screen.Register.route){
+                RegisterScreen(navController = navController)
+            }
         }
-        authNavGraph(navController)
+        //authNavGraph(navController)
         composable(route = Graph.TESTS){
             MainScreen()
         }

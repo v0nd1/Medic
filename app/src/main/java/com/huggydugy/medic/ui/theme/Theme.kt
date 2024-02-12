@@ -13,8 +13,8 @@ import androidx.core.view.WindowCompat
 private val LightColorScheme = lightColorScheme(
     primary = Blue,
     secondary = Orange,
-    background = Color(0xFFFFFFFF),
-    surface = Color(0xFFFFFFFF)
+    background = Color(0xFFFDFDFD),
+    surface = Color(0xFFFDFDFD)
 )
 
 @Composable
