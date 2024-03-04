@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.board
+package com.huggydugy.medic.presentation.screens.board
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,12 +13,12 @@ class OnBoardViewModel @Inject constructor(
     fun onEvent(event: OnBoardEvent){
         when(event){
             is OnBoardEvent.SaveAppEntry -> {
-                saveAppEntry()
+                saveUserEntry()
             }
         }
     }
 
-    private fun saveAppEntry() {
+    private fun saveUserEntry() {
         viewModelScope.launch {
             appEntryUseCases.saveAppEntry()
         }

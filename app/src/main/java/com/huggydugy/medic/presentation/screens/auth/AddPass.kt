@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.auth
+package com.huggydugy.medic.presentation.screens.auth
 
 import android.content.Context
 import androidx.compose.foundation.Image
@@ -57,7 +57,7 @@ import com.huggydugy.medic.ui.theme.White
 import kotlinx.coroutines.delay
 
 const val pinSize = 4
-const val password = "1234" //sample password
+const val password = "1234"
 
 @Composable
 fun PinLockScreen() {

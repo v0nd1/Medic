@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.board
+package com.huggydugy.medic.presentation.screens.board
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image

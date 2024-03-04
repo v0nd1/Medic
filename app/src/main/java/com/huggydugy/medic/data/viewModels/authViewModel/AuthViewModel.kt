@@ -7,12 +7,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.huggydugy.medic.data.viewModels.UIEvent
 import com.huggydugy.medic.data.rules.Validator
 
-/*
-* Автор: Вдовенко Дмитрий
-* Дата создания: 01.02.2024, 11:22
-* Класс для учета изменений полей регистрации
-*/
-
 class AuthViewModel: ViewModel() {
 
     private val TAG = AuthViewModel::class.simpleName

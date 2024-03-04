@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.auth
+package com.huggydugy.medic.presentation.screens.auth
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,7 +25,7 @@ import com.huggydugy.medic.presentation.components.ThemeExposedDropdownMenuBox
 import com.huggydugy.medic.presentation.components.ThemeTextField
 import com.huggydugy.medic.data.viewModels.authViewModel.AuthViewModel
 import com.huggydugy.medic.data.viewModels.UIEvent
-import com.huggydugy.medic.presentation.navgraph.Graph
+import com.huggydugy.medic.presentation.navgraph.Screen
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Blue
 import com.huggydugy.medic.ui.theme.Gray
@@ -56,7 +56,7 @@ fun RegisterScreen(navController: NavHostController, loginViewModel: AuthViewMod
             Text(
                 modifier = Modifier
                     .padding(top = 5.dp)
-                    .clickable { navController.navigate(Graph.TESTS)},
+                    .clickable { navController.navigate(Screen.MainNavigation.route)},
                 text = "Пропустить",
                 fontSize = 15.sp,
                 fontFamily = Roboto,
@@ -120,7 +120,7 @@ fun RegisterScreen(navController: NavHostController, loginViewModel: AuthViewMod
         ThemeButton(
             label = "Создать",
             navController = navController,
-            route = Graph.TESTS,
+            route = Screen.MainNavigation.route,
             enabled = true,
             onClick = {
                 loginViewModel.onEvent(UIEvent.RegisterButtonClicked)

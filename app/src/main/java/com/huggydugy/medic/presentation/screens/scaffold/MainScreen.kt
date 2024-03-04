@@ -1,5 +1,6 @@
-package com.huggydugy.medic.presentation.scaffold
+package com.huggydugy.medic.presentation.screens.scaffold
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.RowScope
@@ -21,10 +22,15 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.huggydugy.medic.graphs.MainNavGraph
 import com.huggydugy.medic.presentation.navgraph.Screen
+import com.huggydugy.medic.presentation.screens.scaffold.account.AccountScreen
+import com.huggydugy.medic.presentation.screens.scaffold.results.ResultsScreen
+import com.huggydugy.medic.presentation.screens.scaffold.support.SupportScreen
+import com.huggydugy.medic.presentation.screens.scaffold.tests.TestsScreen
 import com.huggydugy.medic.ui.theme.BlueLight
 import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight2
@@ -41,7 +47,24 @@ fun MainScreen(navController: NavHostController = rememberNavController()){
         contentColor = White2
     ) {
         Box(modifier = Modifier.padding(it)){
-            MainNavGraph(navController = navController)
+            NavHost(
+                navController = navController,
+                startDestination = Screen.Tests.route,
+                route = "main2"
+            ){
+                composable(route = Screen.Tests.route){
+                    TestsScreen(navController = navController)
+                }
+                composable(route = Screen.Results.route){
+                    ResultsScreen(navController = navController)
+                }
+                composable(route = Screen.Support.route){
+                    SupportScreen(navController = navController)
+                }
+                composable(route = Screen.Account.route){
+                    AccountScreen(navController = navController)
+                }
+            }
         }
     }
 }
@@ -66,7 +89,8 @@ fun BottomBar(navController: NavHostController){
                 AddItem(
                     screen = screen,
                     currentDestination = currentDestination,
-                    navController = navController)
+                    navController = navController
+                )
             }
         }
     }
@@ -79,6 +103,10 @@ fun RowScope.AddItem(
     currentDestination: NavDestination?,
     navController: NavHostController
 ) {
+    val isSelected = currentDestination?.hierarchy?.any {
+        it.route == screen.route
+    } == true
+    val backgroundModifier = if (isSelected) Modifier.background(color = BlueLight) else Modifier
     NavigationBarItem(
         label = {
             Text(text = screen.title, fontFamily = Roboto)
@@ -99,6 +127,7 @@ fun RowScope.AddItem(
                 launchSingleTop = true
             }
         },
+        modifier = backgroundModifier,
         colors = NavigationBarItemDefaults.colors(
             selectedIconColor= BlueLight,
             selectedTextColor = BlueLight,

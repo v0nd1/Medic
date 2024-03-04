@@ -1,11 +1,6 @@
 package com.huggydugy.medic.data.viewModels
 
 
-/*
-* Автор: Вдовенко Дмитрий
-* Дата создания: 01.02.2024, 11:21
-* Класс для учета изменений полей регистрации
-*/
 sealed class UIEvent{
     data class EmailChanged(val email: String): UIEvent()
     data class FirstNameChanged(val firstName: String) : UIEvent()

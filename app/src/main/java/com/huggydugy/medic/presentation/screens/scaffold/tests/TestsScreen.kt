@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.scaffold.tests
+package com.huggydugy.medic.presentation.screens.scaffold.tests
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -28,48 +27,32 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.asIntState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.huggydugy.medic.R
 import com.huggydugy.medic.presentation.components.ThemeSearchBar
-import com.huggydugy.medic.data.viewModels.mainViewModel.MainViewModel
+import com.huggydugy.medic.presentation.mainActivity.MainViewModel
 import com.huggydugy.medic.ui.theme.Black
 import com.huggydugy.medic.ui.theme.Blue
-import com.huggydugy.medic.ui.theme.BlueLight
-import com.huggydugy.medic.ui.theme.BlueLight2
-import com.huggydugy.medic.ui.theme.BlueLight3
-import com.huggydugy.medic.ui.theme.BlueLight4
 import com.huggydugy.medic.ui.theme.Gray
-import com.huggydugy.medic.ui.theme.GrayLight
 import com.huggydugy.medic.ui.theme.GrayLight2
-import com.huggydugy.medic.ui.theme.GrayLight4
 import com.huggydugy.medic.ui.theme.Roboto
 import com.huggydugy.medic.ui.theme.White
-import com.huggydugy.medic.ui.theme.White2
-import com.huggydugy.medic.ui.theme.White3
 
 private val PADDING = 20.dp
 @Composable

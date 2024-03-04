@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.auth
+package com.huggydugy.medic.presentation.screens.auth
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

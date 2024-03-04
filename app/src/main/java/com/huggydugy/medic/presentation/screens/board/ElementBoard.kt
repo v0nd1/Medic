@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.board
+package com.huggydugy.medic.presentation.screens.board
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.unit.Dp

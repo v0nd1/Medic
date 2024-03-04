@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.scaffold.account
+package com.huggydugy.medic.presentation.screens.scaffold.account
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

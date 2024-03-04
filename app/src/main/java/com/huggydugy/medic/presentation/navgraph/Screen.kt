@@ -15,11 +15,15 @@ sealed class Screen (
     val title: String = "",
 
 ){
+    // Navigation blocks names
+    object AppStartNavigation : Screen(route = "appStartNavigation")
+    object AuthNavigation : Screen(route = "authNavigation")
+    object MainNavigation : Screen(route = "mainNavigation")
+
     // Start screens
     object OnBoard : Screen("on_board" )
     object AddPassword : Screen("add_password")
     object SignUp : Screen("auth")
-    object UU : Screen("uu")
     object CodeInput : Screen("code_input")
     object Register : Screen("register")
 

@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.auth
+package com.huggydugy.medic.presentation.screens.auth
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -115,7 +115,7 @@ fun CodeInputScreen(navController: NavController){
             }
 
         }
-        }
+    }
 
 
 }

@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.scaffold.tests
+package com.huggydugy.medic.presentation.screens.scaffold.tests
 
 sealed class CardCatalogData(
     val title: String,

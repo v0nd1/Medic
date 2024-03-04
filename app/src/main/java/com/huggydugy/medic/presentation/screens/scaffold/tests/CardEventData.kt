@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.scaffold.tests
+package com.huggydugy.medic.presentation.screens.scaffold.tests
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp

@@ -6,10 +6,9 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class Medic : Application() {
+    override fun onCreate() {
+        super.onCreate()
 
-//    override fun onCreate() {
-//        super.onCreate()
-//
-//        FirebaseApp.initializeApp(this)
-//    }
+        FirebaseApp.initializeApp(this)
+    }
 }

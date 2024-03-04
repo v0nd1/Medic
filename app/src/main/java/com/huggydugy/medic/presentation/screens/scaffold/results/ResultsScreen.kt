@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.scaffold.results
+package com.huggydugy.medic.presentation.screens.scaffold.results
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

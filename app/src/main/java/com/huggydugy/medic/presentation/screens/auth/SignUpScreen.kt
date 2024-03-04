@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.auth
+package com.huggydugy.medic.presentation.screens.auth
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -42,8 +42,6 @@ import com.huggydugy.medic.ui.theme.Gray
 import com.huggydugy.medic.ui.theme.GrayLight
 import com.huggydugy.medic.ui.theme.Roboto
 
-//
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignUpScreen(navController: NavController, loginViewModel: AuthViewModel = viewModel()){
     var value by remember { mutableStateOf("") }
@@ -117,19 +115,25 @@ fun SignUpScreen(navController: NavController, loginViewModel: AuthViewModel = v
                 fontSize = 12.sp
             )
             Spacer(modifier = Modifier.height(10.dp))
-            YandexButton()
+            YandexButton(
+                navController = navController
+            )
         }
 
     }
 }
 
 @Composable
-private fun YandexButton(){
+private fun YandexButton(
+    navController: NavController
+){
     Button(
         modifier = Modifier
             .fillMaxWidth()
             .height(55.dp),
-        onClick = { /*TODO*/ },
+        onClick = {
+            navController.navigate(Screen.MainNavigation.route)
+        },
         shape = RoundedCornerShape(10.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent,

@@ -1,4 +1,4 @@
-package com.huggydugy.medic.presentation.scaffold.support
+package com.huggydugy.medic.presentation.screens.scaffold.support
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
