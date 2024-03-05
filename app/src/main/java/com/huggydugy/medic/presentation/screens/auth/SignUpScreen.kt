@@ -115,33 +115,23 @@ fun SignUpScreen(navController: NavController, loginViewModel: AuthViewModel = v
                 fontSize = 12.sp
             )
             Spacer(modifier = Modifier.height(10.dp))
-            YandexButton(
-                navController = navController
-            )
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(55.dp),
+                onClick = {
+                    navController.navigate(Screen.MainNavigation.route)
+                },
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Transparent,
+                    contentColor = Black
+                ),
+                border = BorderStroke(1.dp, GrayLight)
+
+            ) {
+                Text(text = "Войти с Яндекс")
+            }
         }
-
-    }
-}
-
-@Composable
-private fun YandexButton(
-    navController: NavController
-){
-    Button(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(55.dp),
-        onClick = {
-            navController.navigate(Screen.MainNavigation.route)
-        },
-        shape = RoundedCornerShape(10.dp),
-        colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Transparent,
-            contentColor = Black
-        ),
-        border = BorderStroke(1.dp, GrayLight)
-
-    ) {
-        Text(text = "Войти с Яндекс")
     }
 }

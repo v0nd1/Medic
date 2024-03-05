@@ -37,7 +37,6 @@ fun NavGraph(
                 )
             }
         }
-
         navigation(
             route = Screen.AuthNavigation.route,
             startDestination = Screen.SignUp.route
@@ -62,7 +61,6 @@ fun NavGraph(
                     navController = navController,
                 )
             }
-
         }
 
         composable(route = Screen.MainNavigation.route){
