@@ -44,7 +44,7 @@ import com.huggydugy.medic.ui.theme.Roboto
 @Composable
 fun OnBoardScreen(
     navController: NavController,
-    //event: (OnBoardEvent) -> Unit
+    onEvent: (OnBoardEvent) -> Unit
 ){
     val elements = listOf(
         ElementBoard(
@@ -92,7 +92,8 @@ fun OnBoardScreen(
                         modifier = Modifier
                             .padding(start = 20.dp)
                             .clickable {
-                                //event(OnBoardEvent.SaveAppEntry)
+                                onEvent(OnBoardEvent.SaveAppEntry)
+                                navController.popBackStack()
                                 navController.navigate(Screen.SignUp.route)
                             },
                         text = if(it == elements.lastIndex) "Завершить" else "Пропустить",

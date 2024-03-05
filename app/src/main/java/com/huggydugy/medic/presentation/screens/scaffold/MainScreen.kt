@@ -50,7 +50,7 @@ fun MainScreen(navController: NavHostController = rememberNavController()){
             NavHost(
                 navController = navController,
                 startDestination = Screen.Tests.route,
-                route = "main2"
+                route = "main"
             ){
                 composable(route = Screen.Tests.route){
                     TestsScreen(navController = navController)

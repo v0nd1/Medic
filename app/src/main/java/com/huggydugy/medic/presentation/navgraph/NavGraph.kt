@@ -2,6 +2,7 @@ package com.huggydugy.medic.presentation.navgraph
 
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -11,6 +12,7 @@ import com.huggydugy.medic.presentation.screens.auth.CodeInputScreen
 import com.huggydugy.medic.presentation.screens.auth.RegisterScreen
 import com.huggydugy.medic.presentation.screens.auth.SignUpScreen
 import com.huggydugy.medic.presentation.screens.board.OnBoardScreen
+import com.huggydugy.medic.presentation.screens.board.OnBoardViewModel
 import com.huggydugy.medic.presentation.screens.scaffold.MainScreen
 
 @Composable
@@ -18,6 +20,7 @@ fun NavGraph(
     startDestination: String
 ) {
     val navController = rememberNavController()
+
     NavHost(
         navController = navController,
         startDestination = startDestination
@@ -27,8 +30,10 @@ fun NavGraph(
             startDestination = Screen.OnBoard.route
         ) {
             composable(route = Screen.OnBoard.route) {
+                val viewModel: OnBoardViewModel = hiltViewModel()
                 OnBoardScreen(
                     navController = navController,
+                    onEvent = viewModel::onEvent
                 )
             }
         }
