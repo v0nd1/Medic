@@ -11,7 +11,6 @@ import com.huggydugy.medic.R
 sealed class Screen (
     val route: String,
     val iconFilled: Int = 0,
-    val iconOutlined: Int = 0,
     val title: String = "",
 
 ){
@@ -21,36 +20,31 @@ sealed class Screen (
     object MainNavigation : Screen(route = "mainNavigation")
 
     // Start screens
-    object OnBoard : Screen("on_board" )
-    object AddPassword : Screen("add_password")
+    object OnBoard : Screen("onBoard" )
+    object AddPassword : Screen("addPassword")
     object SignUp : Screen("auth")
-    object CodeInput : Screen("code_input")
+    object CodeInput : Screen("codeInput")
     object Register : Screen("register")
 
     // Main scaffold screens
-    object Main : Screen("main")
     object Account : Screen(
         route = "account",
         title = "Профиль",
-        iconFilled =  R.drawable.account_filled,
-        iconOutlined = R.drawable.account_outlined
+        iconFilled =  R.drawable.account_filled
     )
     object Tests : Screen(
         route = "tests",
         title = "Анализы",
-        iconFilled = R.drawable.tests_filled,
-        iconOutlined = R.drawable.tests_outlined
+        iconFilled = R.drawable.tests_filled
     )
     object Results : Screen(
         route = "results",
         title = "Результаты",
-        iconFilled = R.drawable.results,
-        iconOutlined = R.drawable.results
+        iconFilled = R.drawable.results
     )
     object Support : Screen(
-        route = "suport",
+        route = "support",
         title = "Поддержка",
-        iconFilled = R.drawable.support,
-        iconOutlined = R.drawable.support
+        iconFilled = R.drawable.support
     )
 }

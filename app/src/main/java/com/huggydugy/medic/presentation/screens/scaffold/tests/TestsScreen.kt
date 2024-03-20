@@ -57,24 +57,25 @@ import com.huggydugy.medic.ui.theme.White
 private val PADDING = 20.dp
 @Composable
 fun TestsScreen(navController: NavController, mainViewModel: MainViewModel = viewModel()){
-    val scrollBehavior = rememberScrollState()
-    Scaffold(
-        topBar = {
-            ThemeSearchBar()
-        }
-    ) {
-        Column(
-            modifier = Modifier
-                .verticalScroll(scrollBehavior)
-                .fillMaxSize()
-                .padding(it)
-        ) {
-            Spacer(modifier = Modifier.height(30.dp))
-            Events()
-            Spacer(modifier = Modifier.height(30.dp))
-            CatalogTests(mainViewModel)
-        }
-    }
+    Text(text = "DDDDDD")
+//    val scrollBehavior = rememberScrollState()
+//    Scaffold(
+//        topBar = {
+//            ThemeSearchBar()
+//        }
+//    ) {
+//        Column(
+//            modifier = Modifier
+//                .verticalScroll(scrollBehavior)
+//                .fillMaxSize()
+//                .padding(it)
+//        ) {
+//            Spacer(modifier = Modifier.height(30.dp))
+//            Events()
+//            Spacer(modifier = Modifier.height(30.dp))
+//            CatalogTests(mainViewModel)
+//        }
+//    }
 
 
 }

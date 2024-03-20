@@ -43,7 +43,10 @@ import com.huggydugy.medic.ui.theme.GrayLight
 import com.huggydugy.medic.ui.theme.Roboto
 
 @Composable
-fun SignUpScreen(navController: NavController, loginViewModel: AuthViewModel = viewModel()){
+fun SignUpScreen(
+    navController: NavController,
+    //loginViewModel: AuthViewModel = viewModel()
+){
     var value by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
@@ -82,26 +85,26 @@ fun SignUpScreen(navController: NavController, loginViewModel: AuthViewModel = v
         ThemeTextField(
             placeholder = "example@mail.ru",
             onTextSelected = {
-                loginViewModel.onEvent(UIEvent.EmailChanged(it))
+                //loginViewModel.onEvent(UIEvent.EmailChanged(it))
             },
-            errorStatus = loginViewModel.registrationUIState.value.emailError
+            //errorStatus = loginViewModel.registrationUIState.value.emailError
         )
         Spacer(modifier = Modifier.height(25.dp))
         ThemeTextField(
             placeholder = "password",
             onTextSelected = {
-                loginViewModel.onEvent(UIEvent.PasswordChanged(it))
+                //loginViewModel.onEvent(UIEvent.PasswordChanged(it))
             },
-            errorStatus = loginViewModel.registrationUIState.value.passwordError
+            //errorStatus = loginViewModel.registrationUIState.value.passwordError
         )
         Spacer(modifier = Modifier.height(25.dp))
         ThemeButton(
             label = "Далее",
             navController = navController,
             route = Screen.CodeInput.route,
-            enabled = loginViewModel.emailValidationPassed.value,
+            //enabled = loginViewModel.emailValidationPassed.value,
             onClick = {
-                loginViewModel.onEvent(UIEvent.CheckEmailButtonClicked)
+                //loginViewModel.onEvent(UIEvent.CheckEmailButtonClicked)
             }
         )
         Spacer(modifier = Modifier.weight(1f))

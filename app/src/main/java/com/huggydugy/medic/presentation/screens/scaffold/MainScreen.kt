@@ -42,15 +42,15 @@ import com.huggydugy.medic.ui.theme.White2
 fun MainScreen(navController: NavHostController = rememberNavController()){
     Scaffold(
         bottomBar = {
-            BottomBar(navController = navController)
+            //BottomBar(navController = navController)
         },
-        contentColor = White2
+        //contentColor = White2
     ) {
         Box(modifier = Modifier.padding(it)){
             NavHost(
                 navController = navController,
                 startDestination = Screen.Tests.route,
-                route = "main"
+                route = Screen.MainNavigation.route
             ){
                 composable(route = Screen.Tests.route){
                     TestsScreen(navController = navController)
